@@ -4,6 +4,7 @@
   "description": "A client for Quarto!",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
     "test": "mocha --require ts-node/register --require ./test/testHelper.ts  \"test/**/*spec@(.ts|.tsx)\"",
     "test:watch": "npm run test -- --watch"
   },
