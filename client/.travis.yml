@@ -6,7 +6,7 @@ install:
   - nvm install 5.10.1
   - npm install
 
-after_install:
+before_script:
   - ./node_modules/.bin/typings install
 
 script:
