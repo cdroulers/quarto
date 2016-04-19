@@ -1,13 +1,6 @@
 language: python
 python:
-  - 3.5
-
-install:
-  - nvm install 5.10.1
-  - npm install
-
-after_install:
-  - ./node_modules/.bin/typings install
+  - "3.5"
 
 script:
   - npm test
