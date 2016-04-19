@@ -13,6 +13,7 @@ export interface IGame {
   winningPlayer: number;
   board: { [key: string]: IPiece };
   availablePieces: IPiece[];
+  winningCoordinates?: ICoordinates[];
 }
 
 function _getKey(coords: ICoordinates) {
@@ -58,11 +59,11 @@ export function pieceGiven(currentGame: IGame, piece: IPiece): IGame {
     currentPiece: piece,
     isPlacingPiece: true,
     winningPlayer: null,
-    availablePieces: currentGame.availablePieces.filter(x => x.black !== piece.black &&
-      x.circle !== piece.circle &&
-      x.hole !== piece.hole &&
+    availablePieces: currentGame.availablePieces.filter(x => x.black !== piece.black ||
+      x.circle !== piece.circle ||
+      x.hole !== piece.hole ||
       x.tall !== piece.tall),
-    board: currentGame.board
+    board: Object.assign({}, currentGame.board, {})
   };
 }
 
@@ -77,5 +78,17 @@ export function piecePlaced(currentGame: IGame, coords: ICoordinates): IGame {
     winningPlayer: null,
     availablePieces: currentGame.availablePieces.slice(0),
     board: newBoard
+  };
+}
+
+export function gameWon(currentGame: IGame, winningPlayer: number, winningCoordinates: ICoordinates[]): IGame {
+  return {
+    currentPlayer: currentGame.currentPlayer,
+    currentPiece: null,
+    isPlacingPiece: false,
+    winningPlayer: winningPlayer,
+    availablePieces: currentGame.availablePieces.slice(0),
+    board: Object.assign({}, currentGame.board, {}),
+    winningCoordinates
   };
 }

@@ -1,3 +1,7 @@
+# Lol Windows needs a comment here
+/build/
+/typings/
+
 # Logs
 logs
 *.log

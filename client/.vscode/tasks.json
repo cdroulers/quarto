@@ -17,6 +17,7 @@
     {
       "taskName": "build",
       "args": [
+        "-s"
       ],
       "isBuildCommand": true,
       "problemMatcher": "$tsc"
